@@ -30,7 +30,9 @@ composer install
 	
 install thinkphp
 
-	composer create-project topthink/think tp5
+	composer create-project --prefer-dist topthink/think tp5
+
+### 路由
 
 ## restful
 
