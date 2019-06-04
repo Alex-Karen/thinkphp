@@ -71,9 +71,14 @@ get post put delete any
 
 创建控制器
 
-	php think make:controller --plain 模块名/控制器名
+	php think make:controller --plain 模块名/控制器名 (首字母大写)
 
 	--plain 标准控制器 (默认创建的控制器是一个资源控制器，所以一般加上此选项)
+
+前置操作
+
+	可以为某个或者某些操作指定前置执行的操作方法，设置 beforeActionList属性可以指定某个方法为其他方法的前置操作，
+	数组键名为需要调用的前置方法名，无值的话为当前控制器下所有方法的前置方法。
 
 ## restful
 

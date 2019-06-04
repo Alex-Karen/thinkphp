@@ -8,8 +8,9 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
-//use think\facade\Route;
+use think\facade\Route;
 
+Route::get('abc', '@index/index/demo')->name('indexA');
 
 /*路由分组*/
 /* Route::group('admin', function () {
@@ -43,7 +44,7 @@ Route::get('/ee/[:id]', function($id = 0) {
 });
 */
 
-Route::get('dd', 'index/index/demo');
+//Route::get('dd', 'index/index/demo');
 
 /*Route::post('/', function() {
     return 'post';
