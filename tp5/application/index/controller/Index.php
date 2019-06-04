@@ -1,4 +1,5 @@
 <?php
+
 namespace app\index\controller;
 
 class Index
@@ -8,7 +9,8 @@ class Index
         return 'PHP是世界上最好的语言';
     }
 
-    public function demo() {
+    public function demo()
+    {
         dump($_SERVER);
     }
 
