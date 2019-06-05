@@ -47,6 +47,8 @@ Thinkphp框架提供了两种路由规则
     注：ThinkPHP5.1的路由定义更加对象化，并且默认开启路由（不能关闭），如果一个URL没有定义路由，则采用默认的PATH_INFO 模式访问URL。
 
     给控制器方法设置好了请求的路由规则后，原来的pathinfo请求则失效，请求就会报异常，只能通过自定义路由规则来请求
+	
+	php think route:list 查看路由列表
 
 get post put delete any
 
