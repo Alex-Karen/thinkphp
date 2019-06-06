@@ -10,12 +10,19 @@
 // +----------------------------------------------------------------------
 use think\facade\Route;
 
+Route::get('index', '@index/index/index')->name('index');
 
-
-Route::get('req/:id', '@index/index/req')->name('index/index/req');
+/*Route::get('req/:id', '@index/index/req')->name('index/index/req');
 Route::post('req/:id', '@index/index/req')->name('index/index/req');
 Route::put('req/:id', '@index/index/req')->name('index/index/req');
 Route::delete('req/:id', '@index/index/req')->name('index/index/req');
+
+Route::group(['prefix'=> '@index/index/'], function() {
+    Route::get('req2/[:id]', 'req2')->name('index/index/req2');
+    Route::post('req2', 'req2')->name('index/index/req2');
+    Route::put('req2', 'req2')->name('index/index/req2');
+    Route::delete('req2', 'req2')->name('index/index/req2');
+});*/
 
 //Route::get('abc', '@index/index/demo')->name('indexA');
 
