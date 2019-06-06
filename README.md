@@ -130,6 +130,21 @@ get post put delete any
 	重定向 redirect();
 	
 模板
+	
+	return $this->fetch('index@index/index');
+
+	return view('index@index/index');
+	
+	return view('index@index/index',compact('aa','arr')); # 推荐写法
+	
+	全局赋值
+	use think\facade\View;
+    # 赋值全局模板变量
+    View::share('name','value');
+    # 或者批量赋值
+    View::share(['name1'=>'value','name2'=>'value2']);
+
+数据库
 
 ## restful
 

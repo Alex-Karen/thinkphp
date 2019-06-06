@@ -5,6 +5,8 @@ namespace app\index\controller;
 //use \think\facade\Request;
 use \think\Controller;
 use \think\Request;
+use \think\facade\view;
+
 class Index extends Controller
 {
     public function index()
@@ -21,6 +23,7 @@ class Index extends Controller
         /*return view('index@index/index', ['aa'=> 'bb']);*/
         $aa = '123';
         $bb = ['name'=>'demo', 'age'=>14];
+        View::share('admin', 'admin');
         return view('index@index/index', compact('aa','bb'));
     }
 

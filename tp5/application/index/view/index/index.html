@@ -10,6 +10,15 @@
 <body>
 {$aa}{$bb['name']}
 <hr>
-
+{:webmd5($admin)}
+<hr>
+{foreach $bb as $k=>$v }
+    {$k}-{$v}
+{/foreach}
+<hr>
+{if $bb.age == 123 } name
+{elseif $aa > 24  /} demo
+{else /} test
+{/if}
 </body>
 </html>
