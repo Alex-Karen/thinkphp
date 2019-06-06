@@ -20,7 +20,7 @@ class Demo extends Controller
         // return $this->success('登录成功', url('su'));
         // return $this->success('success', url('su'));
         // return $this->success('success', url('index/index/demo'));
-         return $this->success('success', url('indexA'), ['status'=> 1]);
+         $this->success('success', url('indexA'), ['status'=> 1]);
         // return $this->error('错了');
     }
     public function su() {

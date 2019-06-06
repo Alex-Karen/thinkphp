@@ -10,7 +10,14 @@
 // +----------------------------------------------------------------------
 use think\facade\Route;
 
-Route::get('abc', '@index/index/demo')->name('indexA');
+
+
+Route::get('req/:id', '@index/index/req')->name('index/index/req');
+Route::post('req/:id', '@index/index/req')->name('index/index/req');
+Route::put('req/:id', '@index/index/req')->name('index/index/req');
+Route::delete('req/:id', '@index/index/req')->name('index/index/req');
+
+//Route::get('abc', '@index/index/demo')->name('indexA');
 
 /*路由分组*/
 /* Route::group('admin', function () {

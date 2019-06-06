@@ -23,18 +23,43 @@ composer install
     composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
     composer config -g repo.packagist composer https://packagist.laravel-china.org
+    
+    升级 composer self-update
 
 查看命令行下可用扩展
 
     php -m
 
-install thinkphp
+### install thinkphp
 
     composer create-project --prefer-dist topthink/think tp5
+    
+    php think run
+
+目录
+
+	application 应用目录  mvc 所在的目录，业务代码所写的目录
+    application/common  公共模块目录
+    application/common/model 公共模块中的模型
+    config/app.php  应用的主配置文件
+    route/route.php 路由文件
+    public 虚拟主机指向的目录  public/static 静态文件所在的目录 可以删除
+    thinkphp 框架核心目录，不要修改 
+    vendor composer 下载的第三方类库 composer管理的
+    composer.json 文件 composer针对于此项目的配置文件
+    think  命令行文件 php think
+
+请求生命周期
+
+	用户请求->入口文件index.php->框架引入文件中->框架实现层(引导加载【容器：(说白话)数组】,URL检测，路由的分配)
+			->控制器->模型->控制器->视图->返回用户
+    路由与控制器之间，我们可以加事件【中间件】
 
 ### 路由
 
 将用户的请求按照事先规划的方案提交给指定的控制器和方法来进行处理
+
+url更加友好，美化，安全
 
 Thinkphp框架提供了两种路由规则
 
@@ -57,7 +82,7 @@ get post put delete any
 路由分组
 
     # 分组的嵌套
-    Route::group(['method'=>'get'], function () {
+    Route::group(['method'=>'get', 'name'=> 'aa', 'prefix', 'middleware'], function () {
         Route::group('blog',function(){
             Route::get(':id', 'read');
             Route::post(':id', 'update');
