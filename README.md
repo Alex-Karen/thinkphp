@@ -144,8 +144,6 @@ get post put delete any
     # 或者批量赋值
     View::share(['name1'=>'value','name2'=>'value2']);
 
-数据库
-
 ## restful
 
 ## vue

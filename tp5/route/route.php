@@ -10,9 +10,15 @@
 // +----------------------------------------------------------------------
 use think\facade\Route;
 
-Route::get('login', '@index/login/index')->name('login');
-Route::post('login', '@index/login/index')->name('login');
 
+
+Route::group('admin', function() {
+    Route::get('login', '@admin/login/index')->name('admin/login/index');
+    Route::post('login', '@admin/login/loginHandler')->name('admin/login/index');
+});
+
+/*Route::get('login', '@index/login/index')->name('login/index');
+Route::post('login', '@index/login/index')->name('login/index');*/
 
 //Route::get('index', '@index/index/index')->name('index');
 
