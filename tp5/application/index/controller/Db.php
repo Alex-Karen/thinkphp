@@ -23,6 +23,16 @@ class Db extends Controller
         /*mdb::name('articles')->insertAll($data); //添加多条数据 array
         db('articles')->insertAll($data);*/
 
+        /*mdb::name('articles')->where('id', 1)->update(['name'=> 'thinkphp');
+        db('articles')->where('id', 11)->update($data);*/
+
+        /*mdb::name('articles')->delete(1);
+        db('atricles')->where('id', 2)->delete(1);
+        mdb::name('articles')
+            ->where('id', 1)
+            ->useSoftDelete('delete_time',time())
+            ->delete();*/
+
 
     }
 }
