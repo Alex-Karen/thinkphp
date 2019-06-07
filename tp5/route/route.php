@@ -10,6 +10,10 @@
 // +----------------------------------------------------------------------
 use think\facade\Route;
 
+Route::get('login', '@index/login/index')->name('login');
+Route::post('login', '@index/login/index')->name('login');
+
+
 //Route::get('index', '@index/index/index')->name('index');
 
 /*Route::get('req/:id', '@index/index/req')->name('index/index/req');
