@@ -19,6 +19,7 @@ Route::group('admin', function() {
 
     Route::get('up', '@admin/up/index')->name('admin/up/index');
     Route::post('upload', '@admin/up/upload')->name('admin/up/upload');
+    Route::delete('del', '@admin/up/del')->name('admin/up/del');
 });
 
 Route::get('/', '@index/index/index');

@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <title>文件上传</title>
     <link rel="stylesheet" href="/static/webuploader/webuploader.css">
+    <style>
+        .box {
+            position: relative;
+            width: 100px;
+        }
+
+        .box p {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            background: red;
+            cursor: pointer;
+            z-index: 100;
+        }
+    </style>
 </head>
 <body>
-<img id="avatar" src="#" alt="a" style="width: 200px; display: none;">
+<div class="box">
+    <img id="avatar" src="#" alt="a" style="width: 200px; display: none;">
+    <p id="del">删除</p>
+</div>
 <div class="btns">
     <div id="picker">选择文件</div>
 </div>
@@ -33,9 +52,24 @@
             __token: token
         }
     });
-    uploader.on( 'uploadSuccess', function( file, $response ) {
+    uploader.on('uploadSuccess', function (file, $response) {
         if ($response.status == 0) {
-            $('#avatar').attr('src', response.msg).show('slow');
+            $('#avatar').attr('src', $response.msg).show('slow');
         }
+    });
+
+    $('#del').click(function () {
+        var img = $(this).prev().attr('src');
+
+        $.ajax({
+            url: '{:url("admin/up/del")}',
+            type: 'delete',
+            data: {img},
+            success: function (data) {
+                if (data.status == 0) {
+                    $('#avatar').hide();
+                }
+            }
+        })
     });
 </script>

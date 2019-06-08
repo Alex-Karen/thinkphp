@@ -23,4 +23,15 @@ class Up extends Controller
             return json(['status' => 1, 'msg' => $file->getError()]);
         }
     }
+
+    public function del(Request $request)
+    {
+        /*dump($request->param());*/
+        $img = dirname(dirname(dirname(__DIR__))) . '/public' . $request->delete('img');
+        $ret = ['status' => 1, 'msg' => '删除失败'];
+        if (unlink($img)) {
+            $ret = ['status' => 0, 'msg' => '删除成功'];
+        }
+        return json($ret);
+    }
 }
