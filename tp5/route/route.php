@@ -12,11 +12,16 @@ use think\facade\Route;
 
 
 
+
 Route::group('admin', function() {
     Route::get('login', '@admin/login/index')->name('admin/login/index');
     Route::post('login', '@admin/login/loginHandler')->name('admin/login/index');
+
+    Route::get('up', '@admin/up/index')->name('admin/up/index');
+    Route::post('upload', '@admin/up/upload')->name('admin/up/upload');
 });
 
+Route::get('/', '@index/index/index');
 /*Route::get('login', '@index/login/index')->name('login/index');
 Route::post('login', '@index/login/index')->name('login/index');*/
 

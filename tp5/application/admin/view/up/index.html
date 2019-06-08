@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+    <link rel="stylesheet" href="/static/webuploader/webuploader.css">
+</head>
+<body>
+<img id="avatar" src="#" alt="a" style="width: 200px; display: none;">
+<div class="btns">
+    <div id="picker">选择文件</div>
+</div>
+
+</body>
+</html>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/webuploader/webuploader.js"></script>
+<script>
+    var token = '{:token()}';
+    var uploader = WebUploader.create({
+        auto: true,
+        // swf文件路径
+        swf: '/static/webuploader/Uploader.swf',
+        // 文件接收服务端。
+        server: '{:url("admin/up/upload")}',
+        // 选择文件的按钮。可选。
+        // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+        pick: '#picker',
+        fileVal: 'pic',
+        // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+        resize: false,
+        formData: {
+            __token: token
+        }
+    });
+    uploader.on( 'uploadSuccess', function( file, $response ) {
+        if ($response.status == 0) {
+            $('#avatar').attr('src', response.msg).show('slow');
+        }
+    });
+</script>
