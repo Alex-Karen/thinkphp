@@ -23,7 +23,13 @@
         <div>
             <h1 class="logo-name">H+</h1>
         </div>
-        <h3>欢迎使用 H+</h3>
+        <h3>
+            {if(session('?error'))/}
+            {:session('error')}
+            {else /}
+            欢迎您
+            {/if}
+        </h3>
 
         <form class="m-t" role="form" action="{:url('admin/login/index')}" method="post">
             {:token()}

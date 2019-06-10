@@ -15,3 +15,7 @@ if (!function_exists('webmd5')) {
         return md5(md5($arg));
     }
 }
+
+function route_path() {
+    return dirname(__DIR__).DIRECTORY_SEPARATOR.'route';
+}

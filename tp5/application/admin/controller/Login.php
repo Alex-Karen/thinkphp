@@ -24,7 +24,7 @@ class Login extends Controller
 
         $ret = model('users')->checkUser($input);
         if (true == $ret) {
-            return 'success';
+            $this->success('登录成功', url('admin/index/index'));
         } else {
             $this->error('用户名或密码错误');
         }
