@@ -2,6 +2,8 @@
 
 namespace app\admin\controller;
 
+use app\admin\validate\ArticleValidate;
+use app\common\model\Articles;
 use think\Controller;
 use think\Request;
 
@@ -14,7 +16,9 @@ class Article extends Controller
      */
     public function index()
     {
-        return view('admin@article/index');
+        $data = model('articles')->paginate(3);
+
+        return view('admin@article/index', compact('data'));
     }
 
     /**
@@ -24,7 +28,10 @@ class Article extends Controller
      */
     public function create()
     {
-        //
+        // 读取栏目
+        $data = db('cates')->select();
+
+        return view('admin@article/create', compact('data'));
     }
 
     /**
@@ -35,7 +42,18 @@ class Article extends Controller
      */
     public function save(Request $request)
     {
-        //
+        $input = $request->post();
+        $ret = $this->validate($input, ArticleValidate::class);
+
+        if (true !== $ret) {
+            $this->error($ret);
+        }
+        // 入库
+        $userinfo          = session('admin.user');
+//        dump($userinfo);die;
+        $input['users_id'] = $userinfo['id'];
+        $ret               = Articles::create($input);
+        return redirect(url('article/index'));
     }
 
     /**
@@ -55,9 +73,14 @@ class Article extends Controller
      * @param  int  $id
      * @return \think\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
-        //
+        // 根据ID查询
+        $data = Articles::find($id);
+        // 读取栏目
+        $cdata = db('cates')->select();
+
+        return view('admin@article/edit', compact('data', 'cdata'));
     }
 
     /**
@@ -69,7 +92,18 @@ class Article extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->put();
+        // 验证
+        $ret = $this->validate($input, ArticleValidate::class);
+        if (true !== $ret) {
+            return $this->error($ret);
+        }
+        // 修改数据
+        unset($input['__token__']);
+        unset($input['_method']);
+        Articles::where('id', $id)->update($input);
+        // 跳转
+        return redirect(url('article/index'));
     }
 
     /**
@@ -80,6 +114,10 @@ class Article extends Controller
      */
     public function delete($id)
     {
-        //
+        Articles::destroy($id);
+
+        $data = Articles::paginate(3)->toArray();
+        #return json(['status' => 0, 'msg' => '删除成功']);
+        return json($data);
     }
 }

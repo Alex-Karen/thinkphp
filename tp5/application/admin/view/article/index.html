@@ -51,18 +51,19 @@
 {block name="js"}
 <script src="/static/vue.js"></script>
 <script>
+    // console.log("{$data}");
     $('.delart').click(function () {
         // 请求地址
         var url = $(this).attr('href');
 
         // 发送ajax
         $.ajax({
-            url: url,
-            type: 'DELETE',
-            success: function (ret) {
+            url:url,
+            type:'DELETE',
+            success:function (ret) {
                 alert(ret);
             }
-        });
+        })
 
         // 取消a标签默认行为
         return false;
