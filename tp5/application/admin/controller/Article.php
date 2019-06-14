@@ -37,7 +37,7 @@ class Article extends Controller
     /**
      * 保存新建的资源
      *
-     * @param  \think\Request  $request
+     * @param  \think\Request $request
      * @return \think\Response
      */
     public function save(Request $request)
@@ -49,17 +49,17 @@ class Article extends Controller
             $this->error($ret);
         }
         // 入库
-        $userinfo          = session('admin.user');
+        $userinfo = session('admin.user');
 //        dump($userinfo);die;
         $input['users_id'] = $userinfo['id'];
-        $ret               = Articles::create($input);
+        $ret = Articles::create($input);
         return redirect(url('article/index'));
     }
 
     /**
      * 显示指定的资源
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \think\Response
      */
     public function read($id)
@@ -70,7 +70,7 @@ class Article extends Controller
     /**
      * 显示编辑资源表单页.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \think\Response
      */
     public function edit(int $id)
@@ -86,8 +86,8 @@ class Article extends Controller
     /**
      * 保存更新的资源
      *
-     * @param  \think\Request  $request
-     * @param  int  $id
+     * @param  \think\Request $request
+     * @param  int $id
      * @return \think\Response
      */
     public function update(Request $request, $id)
@@ -96,7 +96,7 @@ class Article extends Controller
         // 验证
         $ret = $this->validate($input, ArticleValidate::class);
         if (true !== $ret) {
-            return $this->error($ret);
+            $this->error($ret);
         }
         // 修改数据
         unset($input['__token__']);
@@ -109,7 +109,7 @@ class Article extends Controller
     /**
      * 删除指定资源
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \think\Response
      */
     public function delete($id)

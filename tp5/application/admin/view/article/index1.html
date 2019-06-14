@@ -22,14 +22,14 @@
                         </thead>
                         <tbody>
                         <template v-for="item of items.data">
-                        <tr>
-                            <td>{{item.id}}</td>
-                            <td>{{item.cates_id}}</td>
-                            <td>{{item.title}}</td>
-                            <td>
-                                <a @click="delart(item.id)">删除</a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>{{item.id}}</td>
+                                <td>{{item.cates_id}}</td>
+                                <td>{{item.title}}</td>
+                                <td>
+                                    <a @click="delart(item.id)">删除</a>
+                                </td>
+                            </tr>
                         </template>
                         </tbody>
                     </table>
@@ -51,19 +51,19 @@
 <script src="/static/vue.js"></script>
 <script>
     var app = new Vue({
-        el:'#app',
-        data:{
-            items:{item:json_encode($data)}
+        el: '#app',
+        data: {
+            items: {item: json_encode($data)}
         },
-        methods:{
-            delart(id){
+        methods: {
+            delart(id) {
                 // 发送ajax
                 $.ajax({
-                    url:'/admin/art/'+id,
-                    type:'DELETE',
+                    url: '/admin/art/' + id,
+                    type: 'DELETE',
                     success: ret => {
                         this.items = ret;
-                        console,log(ret);
+                        console, log(ret);
                     }
                 })
             }
