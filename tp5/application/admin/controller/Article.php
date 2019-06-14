@@ -112,7 +112,7 @@ class Article extends Controller
      * @param  int $id
      * @return \think\Response
      */
-    public function delete($id)
+    public function delete(int $id)
     {
         Articles::destroy($id);
 

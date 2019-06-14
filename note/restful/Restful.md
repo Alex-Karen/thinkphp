@@ -2,9 +2,9 @@
 
 ## 1.1 背景
 
-​随着互联网的发展, 尤其是移动互联为代表的Web3.0时代. 客户端层出不穷, 以APP、微信、PC浏览器为代表, 服务端业务逻辑是基本一致的.
+​    随着互联网的发展, 尤其是移动互联为代表的Web3.0时代. 客户端层出不穷, 以APP、微信、PC浏览器为代表, 服务端业务逻辑是基本一致的.
 
-​那么有没有一种方式可以做到”**一次编写,随时接入**”呢?
+​    那么有没有一种方式可以做到”**一次编写,随时接入**”呢?
 
 目前比较流行的方案就是"**接口编程**"
 
@@ -12,7 +12,7 @@
 
 ## 1.2 什么是接口编程
 
-​一般来说接口编程是基于HTTP协议, `<u>`通过某个唯一标识符(URI)请求对应的服务器资源(Resource)`</u>`.
+​    一般来说接口编程是基于HTTP协议, `<u>`通过某个唯一标识符(URI)请求对应的服务器资源(Resource)</u>.
 
 ### 1.2.1 什么是URI
 
@@ -31,7 +31,8 @@ Schema://host[:port]/path[?query-string]
 例子:
 
 `http://api.local.com/movies`
-``https://api.local.com:8080/articles?id=100``
+
+`https://api.local.com:8080/articles?id=100`
 
 > URI与URL的区别
 >
@@ -56,9 +57,9 @@ Step1. 创建项目目录
 
 Step2. 创建ajax.html
 
-1)发送ajax请求
+1) 发送ajax请求
 
-2)将获取的数据渲染到页面
+2) 将获取的数据渲染到页面
 
 由于使用jquery封装的ajax. 首先得引入jquery
 
@@ -105,12 +106,12 @@ ajax.html
   <div id="app"></div>
   <!-- 2. 使用jquery发送ajax -->
   <script>
-    $(function (){
+    $(function () {
       $.ajax({
         url: 'http://localhost/20181112/test.php',
         type: 'get',
         dataType: 'json',
-        success: function (resp){
+        success: function (resp) {
           // 3. 从服务器接收数据, 渲染到页面
           console.log(resp)
           $('#app').html(resp.name)
@@ -169,13 +170,13 @@ RESTful是一种软件设计风格, 主要用于有客户端与服务端交互�
 
 比如:
 
-`http://api.local.com/movies----表示电影资源`
+`http://api.local.com/movies`----表示电影资源
 
-`http://api.local.com/images----表示图片资源`
+`http://api.local.com/images`----表示图片资源
 
-`http://api.local.com/musics----表示音乐资源`
+`http://api.local.com/musics`----表示音乐资源
 
-`http://api.local.com/articles----表示文章资源`
+`http://api.local.com/articles`----表示文章资源
 
 ## 2.2 Http动词
 
@@ -213,7 +214,7 @@ GET /articles/1--获取主键id为1的文章
 
 ?page=1--第一页的信息
 
-?offset=10&per_page=1  - 每页10条, 偏移10
+?offset=10&per_page=10--每页10条, 偏移10
 
 ## 2.4 响应状态码
 
@@ -242,13 +243,13 @@ GET /articles/1--获取主键id为1的文章
 
 针对不同的操作, 服务需要返回的结果应该符合这样的规范
 
-GET /collections -返回资源列表(数组)
+GET /collections --返回资源列表(数组)
 
-GET /collections/:id-返回单个资源 eg. /collections/1
+GET /collections/:id--返回单个资源 eg. /collections/1
 
-POST /collections-返回新生成的资源
+POST /collections--返回新生成的资源
 
-PUT /collections/:id-返回资源的完整属性
+PUT /collections/:id--返回资源的完整属性
 
 PATCH /collections/:id--返回被修改的属性
 
@@ -260,7 +261,7 @@ DELETE /collections/:id--返回204状态码+空文档
 
 Postman是一个非常好用的免费API测试工具. 主要用于模拟发送Http请求.
 
-官网地址: ``https://www.getpostman.com/``
+官网地址: `https://www.getpostman.com/`
 
 ## 4.前后端分离与接口文档
 
@@ -296,7 +297,7 @@ Postman是一个非常好用的免费API测试工具. 主要用于模拟发送Ht
 
 后端:json-server
 
-## 5.项目准备
+# 5.项目准备
 
 ## 5.1 使用npm安装vue
 
@@ -318,7 +319,7 @@ npm默认的仓库地址是在国外网站，速度较慢，建议大家设置�
 
 我们首先安装nrm，这里`-g`代表全局安装
 
-```cmd
+```
 npm install nrm -g
 ```
 
@@ -354,7 +355,7 @@ npm install nrm -g
 
 使用如下指令初始化
 
-```cmd
+```
 npm init -y
 ```
 
@@ -366,13 +367,13 @@ npm init -y
 
 执行如下命令安装vue
 
-```cmd
+```
 npm install vue --save
 ```
 
 以上命令可以简写为
 
-```cmd
+```
 npm i vue -S
 ```
 
@@ -402,7 +403,7 @@ json-server是一个简易的后台服务器, 咱们使用它**模拟API接口�
 
 执行命令
 
-```cmd
+```
 npm i json-server -g
 ```
 
@@ -414,13 +415,13 @@ npm i json-server -g
 
 安装完成后, 在C:\Users\Administrator\AppData\Roaming\npm目录下出现
 
-![img](assets/wps7C73.tmp.jpg)
+![img](assets/wps7C73.tmp.jpg) 
 
 表明可以使用全局命令json-server来启动一个API服务器
 
 ### 5.2.1.编写数据文件
 
-创建一个db.json
+创建一个db.json 
 
 示例代码:
 
@@ -445,8 +446,8 @@ npm i json-server -g
 
 在vscode中, 使用ctrl+`打开终端, 执行
 
-```cmd
-json-server --watch db.json
+```
+json-server --watch db.json 
 ```
 
 使用db.json做为数据文件, 提供接口
@@ -455,7 +456,7 @@ json-server --watch db.json
 
 列表接口:
 
-![img](assets/wps6791.tmp.jpg)
+![img](assets/wps6791.tmp.jpg) 
 
 添加接口:
 
@@ -463,7 +464,7 @@ json-server --watch db.json
 
 返回201, 表示添加成功
 
-![img](assets/wps6792.tmp.jpg)
+![img](assets/wps6792.tmp.jpg) 
 
 修改接口:
 
@@ -471,7 +472,7 @@ json-server --watch db.json
 
 返回200, 表示修改成功, 并且返回修改之后的数据
 
-![img](assets/wps67A2.tmp.jpg)
+![img](assets/wps67A2.tmp.jpg) 
 
 删除接口:
 
@@ -479,19 +480,19 @@ json-server --watch db.json
 
 返回200, 表示删除成功
 
-![img](assets/wps67A3.tmp.jpg)
+![img](assets/wps67A3.tmp.jpg) 
 
-## 6. Vue-cli初步
+# 6. Vue-cli初步
 
 ## 6.1什么是Vue-cli
 
 从字面上理解: 就是Vue的命令行工具.
 
-官网: `https://cli.vuejs.org/zh/guide/`
+官网: https://cli.vuejs.org/zh/guide/
 
 Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统
 
-----cmd
+----
 
 说明: Vue-cli和Vue/cli的区别
 
@@ -510,7 +511,7 @@ Vue CLI 是一个基于 Vue.js 进行快速开发的完整系统
 
 输入如下命令安装
 
-```cmd
+```
 npm i vue-cli -g
 ```
 
@@ -534,7 +535,7 @@ npm i vue-cli -g
 
 在全局执行如下命令,
 
-```cmd
+```
 vue --version
 ```
 
@@ -548,7 +549,7 @@ vue --version
 
 2. 使用npm i vue-cli -g安装vue-cli工具
 
-## 7.vue-cli的使用
+# 7.vue-cli的使用
 
 ## 7.1 创建项目
 
@@ -558,11 +559,11 @@ vue --version
 
 在桌面, shift+右键, 打开一个cmd窗口
 
-![img](assets/wps449F.tmp.jpg)
+![img](assets/wps449F.tmp.jpg) 
 
 ### 7.1.2. 执行命令
 
-```cmd
+```
 vue init webpack first
 ```
 
@@ -572,7 +573,7 @@ vue init webpack first
 - webpack: 基于webpack模板
 - first: 项目名称
 
-![img](assets/wps44A0.tmp.jpg)
+![img](assets/wps44A0.tmp.jpg) 
 
 ### 7.1.3. 设置项目名称
 
@@ -580,7 +581,7 @@ vue init webpack first
 
 设置项目的名称, 询问是否使用”first”做为项目名称, 直接按回车
 
-![img](assets/wps44A1.tmp.jpg)
+![img](assets/wps44A1.tmp.jpg) 
 
 ### 7.1.4. 设置项目描述
 
@@ -588,23 +589,23 @@ vue init webpack first
 
 询问是否使用”A vue.js project”做为项目描述, 可以直接按回车, 或者输入一些描述信息
 
-![img](assets/wps44A2.tmp.jpg)
+![img](assets/wps44A2.tmp.jpg) 
 
 比如: 我们可以输入:”My first vue project”回车
 
-![img](assets/wps44A3.tmp.jpg)
+![img](assets/wps44A3.tmp.jpg) 
 
 ### 7.1.5. 设置项目作者
 
 接上一步, 回车后, 出现如下提示
 
-![img](assets/wps44B3.tmp.jpg)
+![img](assets/wps44B3.tmp.jpg) 
 
 ### 7.1.6. 设置编译项
 
 接上一步, 回车后, 出现如下提示, 直接按回车, 选择默认值
 
-![img](assets/wps44B4.tmp.jpg)
+![img](assets/wps44B4.tmp.jpg) 
 
 在这里, 使用上下按键选择
 
@@ -614,7 +615,7 @@ vue init webpack first
 
 接上一步, 回车后, 出现如下提示
 
-![img](assets/wps44B5.tmp.jpg)
+![img](assets/wps44B5.tmp.jpg) 
 
 按回车, 选择Y, 使用!!!
 
@@ -622,41 +623,47 @@ vue init webpack first
 
 接上一步, 回车后, 出现如下提示
 
-![img](assets/wps44B6.tmp.jpg)
+![img](assets/wps44B6.tmp.jpg) 
 
-输入n, 回车. 不使用语法规则检测.
+输入n, 回车. 不使用语法规则检测. 
 
 这里强烈推荐大家在初学的时候, **不使用这个检测!!!** 这个规则非常严格, 特别容易出错
+
+ 
 
 ### 7.1.9. 是否使用单元测试
 
 接上一步, 回车后, 出现如下提示
 
-![img](assets/wps44B7.tmp.jpg)
+![img](assets/wps44B7.tmp.jpg) 
 
 输入n, 回车, 不使用单元测试
+
+ 
 
 ### 7.1.10. 是否使用点对点测试
 
 接上一步, 回车后, 出现如下提示
 
-![img](assets/wps44C8.tmp.jpg)
+![img](assets/wps44C8.tmp.jpg) 
 
 输入n, 回车, 不使用点对点测试
+
+ 
 
 ### 7.1.11. 使用NPM安装所有的依赖包
 
 接上一步, 回车后, 出现如下提示
 
-![img](assets/wps44C9.tmp.jpg)
+![img](assets/wps44C9.tmp.jpg) 
 
 开始安装
 
-![img](assets/wps44CA.tmp.jpg)
+![img](assets/wps44CA.tmp.jpg) 
 
 安装完成, 出现如下提示
 
-![img](assets/wps44CB.tmp.jpg)
+![img](assets/wps44CB.tmp.jpg) 
 
 ### 7.1.12. 测试
 
@@ -664,19 +671,23 @@ vue init webpack first
 
 执行命令
 
-![img](assets/wps44CC.tmp.jpg)
+![img](assets/wps44CC.tmp.jpg) 
 
-![img](assets/wps44CD.tmp.jpg)
+ 
 
-在浏览器中输入`http://localhost:8080`, 打开项目
+![img](assets/wps44CD.tmp.jpg) 
 
-![img](assets/wps44CE.tmp.jpg)
+在浏览器中输入http://localhost:8080, 打开项目
+
+![img](assets/wps44CE.tmp.jpg) 
 
 在cmd命令窗口中, 按ctrl+c, 停止项目
 
-![img](assets/wps44CF.tmp.jpg)
+![img](assets/wps44CF.tmp.jpg) 
 
-输入y 回车, 就可以停止项目
+输入y 回车, 就可以停止项目	
+
+ 
 
 ### **小技巧**
 
@@ -684,15 +695,17 @@ vue init webpack first
 
 2. 制作启动命令
 
-1.修改package.json, 在dev选项后加上--open
+--------
 
-![img](assets/wps44D0.tmp.jpg)
+1. 修改package.json, 在dev选项后加上--open
 
-![img](assets/wps44D1.tmp.jpg)
+![img](assets/wps44D0.tmp.jpg) 
 
-2.制作一个start.bat文件, 编写如下内容
+![img](assets/wps44D1.tmp.jpg) 
 
-![img](assets/wps44D2.tmp.jpg)
+2. 制作一个start.bat文件, 编写如下内容
+
+![img](assets/wps44D2.tmp.jpg) 
 
 ### **提示**
 
@@ -700,11 +713,13 @@ vue init webpack first
 
 2. 不要关闭cmd命令, 一旦关闭, 项目就停止了
 
+ 
+
 ## 7.2 目录结构
 
 基于webpack创建的前端项目的目录结构如下:
 
-![img](assets/wps44D3.tmp.jpg)
+![img](assets/wps44D3.tmp.jpg) 
 
 我们主要的工作目录就是src, 其他的文件是跟打包相关的
 
@@ -714,19 +729,19 @@ vue init webpack first
 
 index.html: 项目唯一的html, 也是整个单页应用(SPA)的入口
 
-​在index.html中只定义了一个div, id=app, 等待被vue渲染
+​	在index.html中只定义了一个div, id=app, 等待被vue渲染
 
 main.js: webpack打包的入口
 
-​定义一个vue对象(Root)
+​	定义一个vue对象(Root)
 
-​一个router, router从router/index.js导入, 使用vue-router进行组件导航
+​	一个router, router从router/index.js导入, 使用vue-router进行组件导航
 
-​挂载了一个子组件:  App, App从App.vue导入
+​	挂载了一个子组件:  App, App从App.vue导入
 
 App.vue: 是所有子组件的祖先
 
-​定义一个锚点
+​	定义一个锚点
 
 当我们访问某一个path时, vue-router会把HelloWorld组件替换App.vue中定义的锚点
 
@@ -741,29 +756,29 @@ App.vue: 是所有子组件的祖先
 
 在src/router/index.js中, 添加一条路由规则, 如下
 
-![img](assets/wps44D4.tmp.jpg)
+![img](assets/wps44D4.tmp.jpg) 
 
 ### 7.4.2. 定义组件
 
 一般地, 为了项目的规范化, compents目录存放公共的组件, 新创建一个views目录存放业务相关组件, 在views下根据模块创建不同的文件夹.
 
-1)在src下创建views目录
+1) 在src下创建views目录
 
-2)在views目录下创建users目录
+2) 在views目录下创建users目录
 
-3)在users目录下创建Userlst.vue(用户列表组件)
+3) 在users目录下创建Userlst.vue(用户列表组件)
 
-![img](assets/wps44D5.tmp.jpg)
+![img](assets/wps44D5.tmp.jpg) 
 
 ### 7.4.3. 导入Userlst组件
 
-![img](assets/wps44D6.tmp.jpg)
+![img](assets/wps44D6.tmp.jpg) 
 
 在index.js中使用”import from”语法导入Userlst组件
 
 示例代码:
 
-```cmd
+```
 import Userlst from '@/views/users/Userlst'
 ```
 
@@ -775,19 +790,19 @@ import Userlst from '@/views/users/Userlst'
 
 ### 7.4.4. 测试
 
-![img](assets/wps44E6.tmp.jpg)
+![img](assets/wps44E6.tmp.jpg) 
 
 ### 补充: 导入的另一种写法
 
 使用一个匿名函数, 返回导入的对象
 
-![img](assets/wps44E7.tmp.jpg)
+![img](assets/wps44E7.tmp.jpg) 
 
 使用ES6的语法, 进一步简化为:
 
-![img](assets/wps44E8.tmp.jpg)
+![img](assets/wps44E8.tmp.jpg) 
 
-## 8.Vuetify初步
+# 8.Vuetify初步
 
 Vue负责的是虽然会帮我们进行视图的渲染，但是样式是有我们自己来完成。这显然不是我们的强项，因此后端开发人员一般都喜欢使用一些现成的UI组件，拿来即用，常见的例如：
 
@@ -805,7 +820,9 @@ Vue负责的是虽然会帮我们进行视图的渲染，但是样式是有我�
 
 然而我们都不用，我们今天推荐的是一款国外的框架：Vuetify
 
-官方网站：`https://vuetifyjs.com/zh-Hans/`
+官方网站：https://vuetifyjs.com/zh-Hans/
+
+
 
 ## 8.1.为什么是Vuetify
 
@@ -831,7 +848,7 @@ Vue负责的是虽然会帮我们进行视图的渲染，但是样式是有我�
 
 在项目中, 使用ctrl+`, 打开命令行, 运行
 
-```cmd
+```
 npm i vuetify -S
 ```
 
@@ -852,7 +869,7 @@ npm i vuetify -S
 
 ![1542072877939](assets/1542072877939.png)
 
-```js
+```javascript
 // 1. 导入vuetify包
 import Vuetify from 'vuetify'
 // 2. 使用Vuetify
@@ -865,7 +882,7 @@ import 'vuetify/dist/vuetify.min.css'
 
 在官网中找到btn(按钮), 在页面中测试使用
 
-`https://vuetifyjs.com/en/components/buttons#introduction`
+https://vuetifyjs.com/en/components/buttons#introduction
 
 ![1541771387646](assets/1541771387646.png)
 
@@ -913,7 +930,7 @@ Auto close tag插件: 自动闭合标签
 
 Auto rename tag插件: 自动重命名标签
 
-## 9.Vuetify中的栅格系统
+#  9.Vuetify中的栅格系统
 
 > 一般来说, 学习一个UI框架主要是3个方面
 >
@@ -925,21 +942,21 @@ Auto rename tag插件: 自动重命名标签
 
 第一个需要了解的就是布局, 要实现布局就离不开栅格系统(弹性盒子flex)
 
-查看一下官网的定义: `https://vuetifyjs.com/zh-Hans/layout/grid`
+查看一下官网的定义: https://vuetifyjs.com/zh-Hans/layout/grid
 
 ![1541788453827](assets/1541788453827.png)
 
-1)什么是12点的栅格系统?
+1) 什么是12点的栅格系统?
 
 将一行分成12份, 如果只有一个元素就占12份, 二个元素就平分12份, 每个占6,依次类推
 
 ![1542043224828](assets/1542043224828.png)
 
-2)弹性盒子(flex-box)
+2) 弹性盒子(flex-box)
 
 使用弹性盒子可以非常方便的实现各种对齐
 
-垂直方向:
+垂直方向: 
 
 - align-start 垂直方向居上对齐
 - align-center 垂直方向中间
@@ -974,7 +991,7 @@ Auto rename tag插件: 自动重命名标签
 {
     path: '/vuetify/grid',
     name: 'grid',
-    component: ()=> import('@/views/vuetify/grid')
+    component: () => import('@/views/vuetify/grid')
 }
 ```
 
@@ -1166,7 +1183,7 @@ layout的属性可以用来控制flex元素的对齐方式, 水平居中,垂直�
 
 ![1542086826527](assets/1542086826527.png)
 
-## 10.列表显示
+# 10.列表显示
 
 ## 10.1 需求分析
 
@@ -1188,7 +1205,7 @@ layout的属性可以用来控制flex元素的对齐方式, 水平居中,垂直�
 
 ### 10.2.1.Vuetify中的表格
 
-`https://vuetifyjs.com/zh-Hans/components/data-tables`
+https://vuetifyjs.com/zh-Hans/components/data-tables
 
 ![1541800434240](assets/1541800434240.png)
 
@@ -1260,7 +1277,7 @@ js部分
 ```js
   // 2. js
   export default {
-    data(){
+    data() {
       return {
         headers: [], // 表头信息
         users: [], // 表格数据
@@ -1347,7 +1364,7 @@ headers:[
 
 参考文档:
 
-`https://vuetifyjs.com/zh-Hans/framework/icons`
+https://vuetifyjs.com/zh-Hans/framework/icons
 
 ![1541802175698](assets/1541802175698.png)
 
@@ -1355,7 +1372,7 @@ headers:[
 
 执行命令
 
-```cmd
+```
 npm install material-design-icons-iconfont -D
 ```
 
@@ -1365,7 +1382,7 @@ npm install material-design-icons-iconfont -D
 
 ![1542081153083](assets/1542081153083.png)
 
-```cmd
+```
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 ```
 
@@ -1412,11 +1429,11 @@ users:[
 
 查找文档
 
-可以找到icon, 这些图标都是符合google的Material设计的,
+可以找到icon, 这些图标都是符合google的Material设计的, 
 
-`https://material.io/tools/icons/?style=baseline 这个网址打开的非常慢, 这里`我直接告诉大家了
+https://material.io/tools/icons/?style=baseline 这个网址打开的非常慢, 这里我直接告诉大家了
 
-```cmd
+``` 
 <v-icon small>edit</v-icon>
 <v-icon small>delete</v-icon>
 ```
@@ -1435,7 +1452,7 @@ users:[
 
 执行命令
 
-```cmd
+```
 npm install axios --save
 ```
 
@@ -1451,9 +1468,9 @@ import axios from 'axios'
 
 编写一个方法getData
 
-```js
+```js 
 methods: {
-    getData(){
+    getData() {
         // get: 发送get请求
         //  参数 url
         // then: 成功的回调
@@ -1463,7 +1480,7 @@ methods: {
             const {status, data} = resp
 
             // 判断status的状态
-            if (status == 200){
+            if (status == 200) {
                 // 赋值
                 this.users = data
             }
@@ -1475,7 +1492,7 @@ methods: {
 使用生命周期函数created()初始化数据
 
 ```js
-created(){
+created() {
     this.getData()
 }
 ```
@@ -1498,7 +1515,7 @@ created(){
 </v-layout>
 ```
 
-## 11.添加用户
+# 11.添加用户
 
 ## 11.1 需求分析
 
@@ -1510,7 +1527,7 @@ created(){
 
 ## 11.2 Vuetify中toolbar
 
-`https://vuetifyjs.com/zh-Hans/components/toolbars`
+https://vuetifyjs.com/zh-Hans/components/toolbars
 
 ![1541808173434](assets/1541808173434.png)
 
@@ -1552,7 +1569,7 @@ created(){
 
 测试效果
 
-![1541809020652](assets/1541809020652.png)
+![1541809020652](assets/1541809020652.png)	
 
 进一步优化
 
@@ -1597,7 +1614,7 @@ created(){
 {
     path: '/users/add',
     name: 'addUser',
-    component: ()=> import('@/views/users/UserAdd')
+    component: () => import('@/views/users/UserAdd')
 },
 ```
 
@@ -1617,7 +1634,7 @@ created(){
 
 这里, 我们需要使用Vuetify中的表单
 
-`https://vuetifyjs.com/zh-Hans/components/forms`
+https://vuetifyjs.com/zh-Hans/components/forms
 
 ![1541810270426](assets/1541810270426.png)
 
@@ -1643,7 +1660,7 @@ label: 表示输入框的文本
 
 ### 11.6.2.使用v-card卡片
 
-`https://vuetifyjs.com/zh-Hans/components/cards`
+https://vuetifyjs.com/zh-Hans/components/cards
 
 ![1541810795768](assets/1541810795768.png)
 
@@ -1659,7 +1676,7 @@ label: 表示输入框的文本
 <v-card>
     <v-card-title>添加用户</v-card-title>
     <v-card-text>
-    表单
+    	表单
     </v-card-text>
     <v-card-actions></v-card-actions>
 </v-card>
@@ -1710,7 +1727,7 @@ label: 表示输入框的文本
       <v-flex xs6>
           卡片
       </v-flex>
-</v-layout>
+</v-layout> 
 ```
 
 最终的页面
@@ -1732,7 +1749,7 @@ label: 表示输入框的文本
 ![1542099065114](assets/1542099065114.png)
 
 ```js
-data(){
+data() {
     return {
         user: {
             name: '',
@@ -1761,7 +1778,7 @@ data(){
 
 ```js
 methods: {
-    add(){
+    add() {
 // 发送请求
     }
 }
@@ -1776,11 +1793,11 @@ import axios from 'axios'
 发送请求
 
 ```js
-add(){
+add() {
     axios.post('http://localhost:3000/users', this.user).then(resp => {
         const {status, data} = resp
 
-        if (status == 201){
+        if (status == 201) {
             alert("添加成功")
             this.$router.push('/users')
         }
@@ -1796,7 +1813,7 @@ add(){
 <v-btn flat color="primary" to="/users">返回</v-btn>
 ```
 
-## 12.修改用户
+# 12.修改用户
 
 ## 12.1 需求分析
 
@@ -1815,7 +1832,7 @@ add(){
 在methods中定义对应的方法
 
 ```js
-edit(id){
+edit(id) {
     this.$router.push('/users/edit/'+id)
 }
 ```
@@ -1830,7 +1847,7 @@ edit(id){
 {
       path: '/users/edit/:id',
       name: 'editUser',
-      component: ()=> import('@/views/users/UserEdit')
+      component: () => import('@/views/users/UserEdit')
 },
 ```
 
@@ -1870,7 +1887,7 @@ edit(id){
 js部分:
 
 ```js
-data(){
+data() {
       return {
         user: {
           name: '',
@@ -1879,8 +1896,8 @@ data(){
       }
     },
     methods: {
-      edit(){
-
+      edit() {
+        
       }
     }
   }
@@ -1890,22 +1907,22 @@ data(){
 
 使用生命周期函数created, 请求数据接口, 获取数据
 
-1)如果要请求数据, 需要使用axios, 首先导入axios
+1) 如果要请求数据, 需要使用axios, 首先导入axios
 
 ```html
 import axios from 'axios'
 ```
 
-2)请求数据
+2) 请求数据
 
 ```js
-created(){
+created() {
     // 1. 获取路由参数中id的值
     this.id = this.$route.params.id
     // 2. 请求接口
     axios.get('http://localhost:3000/users/'+this.id).then(resp => {
         const {status, data} = resp
-        if (status == 200){
+        if (status == 200) {
             this.user = data
         }
     })
@@ -1917,10 +1934,10 @@ created(){
 使用put的方式请求接口, 并携带用户参数, 处理返回结果
 
 ```js
-edit(){
+edit() {
     axios.put('http://localhost:3000/users/'+this.id, this.user).then(resp => {
         const {status, data} = resp
-        if (status == 200){
+        if (status == 200) {
             alert('修改成功')
             this.$router.push('/users')
         }
@@ -1928,7 +1945,7 @@ edit(){
 }
 ```
 
-## 13. 删除用户
+# 13. 删除用户
 
 ## 13.1 需求分析
 
@@ -1946,12 +1963,12 @@ edit(){
 
 编写del方法
 
-```javascript
-del(id){
-    if (confirm('确认删除?')){
+```js
+del(id) {
+    if (confirm('确认删除?')) {
         axios.delete('http://localhost:3000/users/'+id).then(resp => {
             const {status, data} = resp
-            if (status == 200){
+            if (status == 200) {
                 alert('删除成功')
                 this.$router.push('/users')
             }
@@ -1959,3 +1976,40 @@ del(id){
     }
 }
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
