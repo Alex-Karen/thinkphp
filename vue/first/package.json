@@ -5,13 +5,14 @@
   "author": "xfh <m13928810941@163.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js --open",
     "start": "npm run dev",
     "build": "node build/build.js"
   },
   "dependencies": {
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuetify": "^1.5.14"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
