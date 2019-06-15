@@ -13,8 +13,8 @@ Vue.use(Vuetify)
 import 'vuetify/dist/vuetify.min.css'
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
+	el: '#app',
+	router,
+	components: { App },
+	template: '<App/>'
 })
