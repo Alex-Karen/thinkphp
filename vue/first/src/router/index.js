@@ -26,6 +26,16 @@ export default new Router({
 			path: '/grid',
 			name: 'grid',
 			component: () => import('@/views/vuetify/grid')
+		},
+		{
+			path: '/users/add',
+			name: 'addUser',
+			component: () => import('@/views/users/UserAdd')
+		},
+		{
+			path: '/users/edit/:id',
+			name: 'editUser',
+			component: () => import('@/views/users/UserEdit')
 		}
 	]
 })
