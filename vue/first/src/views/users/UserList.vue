@@ -19,7 +19,7 @@
           <v-toolbar-title>用户列表</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
-            <v-btn flat to="/users/add" >添加用户</v-btn>
+            <v-btn flat to="/users/add">添加用户</v-btn>
           </v-toolbar-items>
         </v-toolbar>
         <v-data-table :headers="headers" :items="users" hide-actions class="elevation-1">
@@ -65,29 +65,12 @@ export default {
           sortable: false
         }
       ], // 表头信息
-      users: [
-        {
-          id: 1,
-          name: "鸣人",
-          age: "12"
-        },
-        {
-          id: 2,
-          name: "佐助",
-          age: "100"
-        },
-        {
-          id: "3",
-          name: "test",
-          age: "21"
-        }
-      ] // 表格数据
+      users: [] // 表格数据
     };
   },
   methods: {
     getData() {
       axios.get("http://localhost:3000/users").then(resp => {
-        console.log(resp);
         const { status, data } = resp;
         if (status == 200) {
           this.users = data;
@@ -95,18 +78,19 @@ export default {
       });
     },
     edit(id) {
-      this.$router.push('/users/edit/'+id)
+      this.$router.push("/users/edit/" + id);
     },
     del(id) {
-      if (confirm('确认删除?')) {
-        axios.delete('http://localhost:3000/users/'+id).then(resp => {
-            const {status, data} = resp
-            if (status == 200) {
-                alert('删除成功')
-                this.$router.push('/users')
-            }
-        })
-    }
+      if (confirm("确认删除?")) {
+        axios.delete("http://localhost:3000/users/" + id).then(resp => {
+          const { status, data } = resp;
+          if (status == 200) {
+            // alert("删除成功");
+            // window.location.reload();
+            this.$router.push("/users");
+          }
+        });
+      }
     }
   },
   created() {

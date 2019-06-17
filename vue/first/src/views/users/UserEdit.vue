@@ -36,7 +36,7 @@ export default {
       axios.put("http://localhost:3000/users/" + this.id, this.user).then(resp => {
           const { status, data } = resp;
           if (status == 200) {
-            alert("修改成功");
+            // alert("修改成功");
             this.$router.push("/users");
           }
         });

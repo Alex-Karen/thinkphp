@@ -40,7 +40,7 @@ export default {
         console.log(status);
         console.log(data);
         if (status == 201) {
-          alert("success");
+          // alert("success");
           this.$router.push("/users");
         }
       });
