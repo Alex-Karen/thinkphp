@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue router</title>
+    <style>
+        .top {
+            background-color: orange;
+            height: 80px;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .left {
+            flex: 2;
+            background-color: lightgreen;
+            height: 500px;
+        }
+
+        .main {
+            flex: 8;
+            background-color: lightpink;
+            height: 500px;
+        }
+    </style>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+    <!-- 
+        <router-link>会被翻译成a标签, to属性被翻译成href
+        <router-view>是一个匿名组件, 会被替换
+     -->
+    <div id="app">
+        <div class="top">头部</div>
+        <div class="container">
+            <div class="left">
+                <ul>
+                    <li>
+                        <router-link to="/goods">商品管理</router-link>
+                    </li>
+                    <li>
+                        <router-link to="/user">用户管理</router-link>
+                    </li>
+                </ul>
+            </div>
+            <div class="main">
+                <router-view></router-view>
+            </div>
+        </div>
+    </div>
+    <script>
+        const goods = {
+            template: '<h3>商品管理页面</h3>'
+        }
+        const user = {
+            template: '<h3>用户管理页面</h3>'
+        }
+        const router = new VueRouter({
+            routes: [
+                { path: '/goods', component: goods },
+                { path: '/user', component: user }
+            ]
+        })
+
+        const vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+
+            },
+            router,
+            components: {
+                goods,
+                user
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

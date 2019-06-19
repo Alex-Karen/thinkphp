@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>子组件传值到父组件</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        子组件就是一个按钮, 当点击按钮时, 触发按钮的点击事件, 调用子组件的send方法
+        在send方法中通过this.$emit()调用父组件的方法, 并将数据做为参数传递过去 
+    -->
+    <div id="app">
+        <son @fun="getMsg"></son>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+                getMsg(msg) {
+                    alert(msg)
+                }
+            },
+            components: {
+                son: {
+                    template: '<button @click="send">点我</button>',
+                    methods: {
+                        send() {
+                            this.$emit('fun', '子-父')
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

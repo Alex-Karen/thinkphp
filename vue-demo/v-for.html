@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-for</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(user, index) in users">
+                {{index}}-{{user.name}}-{{user.age}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(value, key) in wife">
+                {{key}}-{{value}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                users: [
+                    {name: '你好', age: 12},
+                    {name: '哈哈', age: 15}
+                ],
+                wife: {
+                    name: '嘿嘿',
+                    age: 12
+                }
+            },
+            methods: {
+                
+            },
+        })
+    </script>
+</body>
+</html>
