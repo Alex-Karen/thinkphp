@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        组件没有el参数, 原因是组件不会和具体的页面元素绑定
+        组件必须有template参数, 原因是组件需要渲染页面, template就是需要渲染的html
+        组件也是一个Vue的实例, 所以在组件中也有data/methods等
+        data必须是一个函数, 并返回一个对象
+     -->
+    <div id="app">
+        <con1></con1>
+        <con1></con1>
+        <con1></con1>
+    </div>
+    <div id="app1">
+        <con1></con1>
+    </div>
+    <script>
+        Vue.component('con1', {
+            template: '<button @click="add">你点击了我{{count}}次</button>',
+            data() {
+                return {
+                    count: 0
+                }
+            },
+            methods: {
+                add() {
+                    this.count++
+                }
+            }
+        });
+        const vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+            
+            }
+        })
+        const vm2 = new Vue({
+            el: '#app1'
+        })
+    </script>
+</body>
+</html>
