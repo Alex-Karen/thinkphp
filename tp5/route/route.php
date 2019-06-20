@@ -10,10 +10,11 @@
 // +----------------------------------------------------------------------
 use think\facade\Route;
 
+Route::get('/api/item/category/list', 'api/Category/list');
 
-Route::get('/', '@index/index/index');
+// Route::get('/', '@index/index/index');
 
-include route_path(). '/admin/admin.php';
+// include route_path(). '/admin/admin.php';
 
 /*Route::get('login', '@index/login/index')->name('login/index');
 Route::post('login', '@index/login/index')->name('login/index');*/
