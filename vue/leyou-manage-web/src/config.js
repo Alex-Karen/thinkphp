@@ -1,4 +1,4 @@
-const baseUrl = 'http://local.leyou.com'
+const baseUrl = 'http://www.tp.com'
 const config = {
   locale: 'zh-CN', // en-US, zh-CN
   url: baseUrl,

@@ -17,7 +17,7 @@
               <img src="../assets/2.jpeg">
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <v-list-tile-title>杰哥</v-list-tile-title>
+              <v-list-tile-title>鹤</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -39,7 +39,11 @@
             </v-list-tile-content>
           </v-list-tile>
           <!-- 二级菜单 -->
-          <v-list-tile v-for="subItem in item.items" :key="subItem.title" :to="item.path + subItem.path">
+          <v-list-tile
+            v-for="subItem in item.items"
+            :key="subItem.title"
+            :to="item.path + subItem.path"
+          >
             <v-list-tile-content>
               <v-list-tile-title>{{ subItem.title }}</v-list-tile-title>
             </v-list-tile-content>
@@ -51,11 +55,7 @@
       </v-list>
     </v-navigation-drawer>
     <!-- 顶部工具条 -->
-    <v-toolbar
-      app
-      dark
-      :color="dark ? 'secondary' : 'primary'"
-    >
+    <v-toolbar app dark :color="dark ? 'secondary' : 'primary'">
       <!-- 隐藏左侧菜单的按钮-->
       <v-toolbar-side-icon @click.stop="drawer = !drawer"/>
       <!-- 收起左侧菜单的按钮-->
@@ -64,12 +64,7 @@
       </v-btn>
       <!-- 切换黑暗主题 -->
       <v-flex xs1>
-        <v-switch
-          :label="dark ? '暗黑' : '明亮'"
-          v-model="dark"
-          color="dark"
-          hide-details
-        />
+        <v-switch :label="dark ? '暗黑' : '明亮'" v-model="dark" color="dark" hide-details/>
       </v-flex>
       <!-- 顶部导航标题 -->
       <v-flex xs3></v-flex>
@@ -101,47 +96,47 @@
 </template>
 
 <script>
-  import menus from "../menu";
+import menus from "../menu";
 
-  export default {
-    data() {
-      return {
-        dark: false,// 是否暗黑主题
-        drawer: true,// 左侧导航是否隐藏
-        miniVariant: false,// 左侧导航是否收起
-        title: '乐优商城后台管理',// 顶部导航条名称,
-        menuMap: {}
-      }
+export default {
+  data() {
+    return {
+      dark: false, // 是否暗黑主题
+      drawer: true, // 左侧导航是否隐藏
+      miniVariant: false, // 左侧导航是否收起
+      title: "乐优商城后台管理", // 顶部导航条名称,
+      menuMap: {}
+    };
+  },
+  computed: {
+    items() {
+      return menus;
     },
-    computed: {
-      items() {
-        return menus;
-      },
-      item1() {
-        const arr = this.$route.path.split("/");
-        return this.menuMap[arr[1]].name;
-      },
-      item2() {
-        const arr = this.$route.path.split("/");
-        return this.menuMap[arr[1]][arr[2]];
-      }
+    item1() {
+      const arr = this.$route.path.split("/");
+      return this.menuMap[arr[1]].name;
     },
-    name: 'App',
-    watch: {},
-    created() {
-      menus.forEach(m => {
-        const p1 = m.path.slice(1);
-        this.menuMap[p1] = {name: m.title};
-        m.items.forEach(i => {
-          this.menuMap[p1][i.path.slice(1)] = i.title;
-        })
-      })
+    item2() {
+      const arr = this.$route.path.split("/");
+      return this.menuMap[arr[1]][arr[2]];
     }
+  },
+  name: "App",
+  watch: {},
+  created() {
+    menus.forEach(m => {
+      const p1 = m.path.slice(1);
+      this.menuMap[p1] = { name: m.title };
+      m.items.forEach(i => {
+        this.menuMap[p1][i.path.slice(1)] = i.title;
+      });
+    });
   }
+};
 </script>
 
 <style scoped>
-  .box {
-    width: 90%;
-  }
+.box {
+  width: 90%;
+}
 </style>
