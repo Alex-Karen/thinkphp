@@ -10,7 +10,7 @@
 // +----------------------------------------------------------------------
 use think\facade\Route;
 
-Route::get('/api/item/category/list', 'api/Category/list');
+Route::get('/api/item/category/list', 'api/Category/list')->allowCrossDomain();
 
 // Route::get('/', '@index/index/index');
 
