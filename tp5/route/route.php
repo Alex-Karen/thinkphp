@@ -10,9 +10,10 @@
 // +----------------------------------------------------------------------
 use think\facade\Route;
 
-Route::get('/api/item/category/list', 'api/Category/list')->allowCrossDomain();
+Route::get('api/item/category/list', 'api/Category/list')->allowCrossDomain();
+Route::get('api/item/brand/page', 'api/Brand/page')->allowCrossDomain();
 
-// Route::get('/', '@index/index/index');
+Route::get('/', '@index/index/index');
 
 // include route_path(). '/admin/admin.php';
 
