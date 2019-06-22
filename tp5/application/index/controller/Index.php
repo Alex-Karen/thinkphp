@@ -23,8 +23,10 @@ class Index extends Controller
         /*return view('index@index/index', ['aa'=> 'bb']);*/
         $aa = '123';
         $bb = ['name'=>'demo', 'age'=>14];
+        $cc = '1d9';
+        $dd = ++$cc;
         View::share('admin', 'admin');
-        return view('index@index/index', compact('aa','bb'));
+        return view('index@index/index', compact('aa','bb', 'dd'));
     }
 
     public function demo()
