@@ -13,6 +13,9 @@ use think\facade\Route;
 Route::get('api/item/category/list', 'api/Category/list')->allowCrossDomain();
 Route::get('api/item/brand/page', 'api/Brand/page')->allowCrossDomain();
 
+Route::post('api/item/brand', 'api/Brand/add')->allowCrossDomain();
+Route::post('api/upload', 'api/Brand/upload')->allowCrossDomain();
+
 Route::get('/', '@index/index/index');
 
 // include route_path(). '/admin/admin.php';

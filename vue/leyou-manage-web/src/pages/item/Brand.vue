@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-card-title>
-      <v-btn color="primary">新增</v-btn>
-      <v-spacer />
+      <v-btn color="primary" @click="show=true">新增</v-btn>
+      <v-spacer/>
       <v-text-field label="请输入关键字搜索" v-model="search" append-icon="search" hide-details></v-text-field>
     </v-card-title>
     <v-data-table
@@ -28,10 +28,28 @@
         </td>
       </template>
     </v-data-table>
+    <v-dialog max-width="500" v-model="show" persistent>
+      <v-card>
+        <!--对话框的标题-->
+        <v-toolbar dense dark color="primary">
+          <v-toolbar-title>新增品牌</v-toolbar-title>
+          <v-spacer/>
+          <!--关闭窗口的按钮-->
+          <v-btn icon @click="show=false">
+            <v-icon>close</v-icon>
+          </v-btn>
+        </v-toolbar>
+        <!--对话框的内容，表单-->
+        <v-card-text class="px-5">
+          <BrandForm @close="closeWindow"></BrandForm>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
 <script>
+import BrandForm from "./BrandForm.vue";
 export default {
   data() {
     return {
@@ -46,7 +64,8 @@ export default {
       search: "", // 搜索过滤字段
       pagination: {}, // 分页信息
       totalBrands: 0, // 总条数
-      loading: true // 是否在加载中
+      loading: true, // 是否在加载中
+      show: false
     };
   },
   methods: {
@@ -70,13 +89,20 @@ export default {
           // 完成赋值后，把加载状态赋值为false
           this.loading = false;
         });
+    },
+    closeWindow() {
+      // 关闭窗口
+      this.show = false;
+      // 重新加载数据
+      this.getDataFromServer();
     }
   },
   mounted() {
     this.getDataFromServer();
   },
   watch: {
-    pagination: { // 监视pagination属性的变化
+    pagination: {
+      // 监视pagination属性的变化
       deep: true, // deep为true，会监视pagination的属性及属性中的对象属性变化
       handler() {
         // 变化后的回调函数，这里我们再次调用getDataFromServer即可
@@ -88,6 +114,9 @@ export default {
         this.getDataFromServer();
       }
     }
+  },
+  components: {
+    BrandForm
   }
 };
 </script>
