@@ -68,7 +68,7 @@ export default {
           const { status, data } = resp;
 
           if (status == 201) {
-              this.$emit("close");
+            this.$emit("close");
             this.$message.success("添加成功");
           } else {
             this.$message.error("添加失败");
