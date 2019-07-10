@@ -25,7 +25,7 @@
         </v-flex>
       </v-layout>
       <v-layout class="my-4" row>
-        <v-spacer/>
+        <v-spacer />
         <v-btn @click="submit" color="primary">提交</v-btn>
         <v-btn @click="clear">重置</v-btn>
       </v-layout>
@@ -54,6 +54,15 @@ export default {
       ]
     };
   },
+  props: {
+    oldBrand: {
+      type: Object
+    },
+    isEdit: {
+      type: Boolean,
+      default: false
+    }
+  },
   methods: {
     submit() {
       // 1.表单验证
@@ -80,7 +89,26 @@ export default {
       this.$refs.myBrandForm.reset();
       this.brand.categories = [];
     }
-  }
+  },
+  watch: {
+      oldBrand: {
+        deep: true,
+        handler(val) {
+          if (val) {
+            // 修改操作
+            this.brand = Object.deepCopy(val)
+          }else {
+            // 新增操作
+            this.brand = {
+              name: '',
+              image: '',
+              letter: '',
+              categories: []
+            }
+          }
+        }
+      }
+    }
 };
 </script>
 

@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-card-title>
-      <v-btn color="primary" @click="show=true">新增</v-btn>
-      <v-spacer/>
+      <v-btn color="primary" @click="addBrand">新增</v-btn>
+      <v-spacer />
       <v-text-field label="请输入关键字搜索" v-model="search" append-icon="search" hide-details></v-text-field>
     </v-card-title>
     <v-data-table
@@ -18,12 +18,12 @@
         <td class="text-xs-center">{{ props.item.id }}</td>
         <td class="text-xs-center">{{ props.item.name }}</td>
         <td class="text-xs-center">
-          <img v-if="props.item.image" :src="props.item.image" width="100">
+          <img v-if="props.item.image" :src="props.item.image" width="100" />
           <span v-else>没有图片</span>
         </td>
         <td class="text-xs-center">{{ props.item.letter }}</td>
         <td class="justify-center layout">
-          <v-btn color="info">编辑</v-btn>
+          <v-btn color="info" @click="editBrand(props.item)">编辑</v-btn>
           <v-btn color="warning">删除</v-btn>
         </td>
       </template>
@@ -33,7 +33,7 @@
         <!--对话框的标题-->
         <v-toolbar dense dark color="primary">
           <v-toolbar-title>新增品牌</v-toolbar-title>
-          <v-spacer/>
+          <v-spacer />
           <!--关闭窗口的按钮-->
           <v-btn icon @click="show=false">
             <v-icon>close</v-icon>
@@ -41,7 +41,7 @@
         </v-toolbar>
         <!--对话框的内容，表单-->
         <v-card-text class="px-5">
-          <BrandForm @close="closeWindow"></BrandForm>
+          <BrandForm @close="closeWindow" :oldBrand="oldBrand"></BrandForm>
         </v-card-text>
       </v-card>
     </v-dialog>
@@ -65,7 +65,9 @@ export default {
       pagination: {}, // 分页信息
       totalBrands: 0, // 总条数
       loading: true, // 是否在加载中
-      show: false
+      show: false,
+      oldBrand: {},
+      isEdit: false // 是否是修改状态
     };
   },
   methods: {
@@ -95,6 +97,20 @@ export default {
       this.show = false;
       // 重新加载数据
       this.getDataFromServer();
+    },
+    editBrand(old) {
+      this.isEdit = true;
+      this.$http.get("/item/brand/cates/" + old.id).then(resp => {
+        // 1. 显示窗口
+        this.show = true;
+        this.oldBrand = old;
+        this.oldBrand.categories = resp.data;
+      });
+    },
+    addBrand() {
+      this.isEdit = false;
+      this.show = true;
+      this.oldBrand = null;
     }
   },
   mounted() {

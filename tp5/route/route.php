@@ -10,11 +10,18 @@
 // +----------------------------------------------------------------------
 use think\facade\Route;
 
-Route::get('api/item/category/list', 'api/Category/list')->allowCrossDomain();
-Route::get('api/item/brand/page', 'api/Brand/page')->allowCrossDomain();
 
-Route::post('api/item/brand', 'api/Brand/add')->allowCrossDomain();
-Route::post('api/upload', 'api/Brand/upload')->allowCrossDomain();
+
+Route::group('api', function() {
+    Route::get('/item/category/list', 'api/Category/list');
+    Route::get('/item/brand/page', 'api/Brand/page');
+
+    Route::post('/item/brand', 'api/Brand/add');
+    Route::post('/upload', 'api/Brand/upload');
+
+    Route::get('/item/brand/cates/:bid', 'api/Brand/cates');
+    
+})->allowCrossDomain();
 
 Route::get('/', '@index/index/index');
 

@@ -6,6 +6,7 @@ use think\Controller;
 use think\Request;
 use app\api\model\Brands;
 use app\api\model\Cate_Brand;
+use think\Db;
 
 class Brand extends Controller
 {
