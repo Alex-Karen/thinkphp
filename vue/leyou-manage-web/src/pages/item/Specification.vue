@@ -132,9 +132,12 @@
           this.$http.get("/item/spec/" + node.id)
             .then(resp => {
               // 查询成功后，把响应结果赋值给specifications属性，Vue会进行自动渲染。
+              //this.specifications = JSON.parse(resp.data);
               this.specifications = resp.data;
               // 记录下此时的规格数据，当页面撤销修改时，用来恢复原始数据
+              //this.oldSpec = JSON.parse(resp.data);
               this.oldSpec = resp.data;
+
               // 打开弹窗
               this.dialog = true;
               // 标记此时要进行修改操作
@@ -178,7 +181,7 @@
       addOption(i, j) {
         this.specifications[i].params[j].options.push("")
       },
-      // 修改模板
+      // 保存模板
       saveTemplate() {
         this.dialog = true;
         this.$http({
