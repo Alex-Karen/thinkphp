@@ -32,7 +32,7 @@
       <v-card>
         <!--对话框的标题-->
         <v-toolbar dense dark color="primary">
-          <v-toolbar-title>新增品牌</v-toolbar-title>
+          <v-toolbar-title>{{isEdit ? '修改' : '新增'}}品牌</v-toolbar-title>
           <v-spacer />
           <!--关闭窗口的按钮-->
           <v-btn icon @click="show=false">

@@ -17,9 +17,17 @@ Route::group('api', function() {
     Route::get('/item/brand/page', 'api/Brand/page');
 
     Route::post('/item/brand', 'api/Brand/add');
+    Route::put('/item/brand', 'api/Brand/upd');
+
     Route::post('/upload', 'api/Brand/upload');
 
     Route::get('/item/brand/cates/:bid', 'api/Brand/cates');
+
+    Route::get('/item/spec/:cid', 'api/Spec/index');
+
+    Route::get('/item/spu/page', 'api/Goods/page');
+
+    Route::get('/item/cate_brand/:cid', 'api/Goods/cate_brand');
     
 })->allowCrossDomain();
 

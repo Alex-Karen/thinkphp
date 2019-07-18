@@ -73,16 +73,19 @@ export default {
         params.cids = categories.map(c => c.id).join(",");
 
         // 发送数据给后台
-        this.$http.post("/item/brand", params).then(resp => {
-          const { status, data } = resp;
-
-          if (status == 201) {
+        this.$http({
+          method: this.isEdit ? "put" : "post", // put表示修改, post表示添加
+          url: "/item/brand",
+          data: params
+        })
+          .then(() => {
+            // 关闭窗口
             this.$emit("close");
-            this.$message.success("添加成功");
-          } else {
-            this.$message.error("添加失败");
-          }
-        });
+            this.$message.success("保存成功！");
+          })
+          .catch(() => {
+            this.$message.error("保存失败！");
+          });
       }
     },
     clear() {
@@ -91,24 +94,24 @@ export default {
     }
   },
   watch: {
-      oldBrand: {
-        deep: true,
-        handler(val) {
-          if (val) {
-            // 修改操作
-            this.brand = Object.deepCopy(val)
-          }else {
-            // 新增操作
-            this.brand = {
-              name: '',
-              image: '',
-              letter: '',
-              categories: []
-            }
-          }
+    oldBrand: {
+      deep: true,
+      handler(val) {
+        if (val) {
+          // 修改操作
+          this.brand = Object.deepCopy(val);
+        } else {
+          // 新增操作
+          this.brand = {
+            name: "",
+            image: "",
+            letter: "",
+            categories: []
+          };
         }
       }
     }
+  }
 };
 </script>
 
