@@ -33,6 +33,7 @@ Route::group('api', function() {
 
 Route::get('/', '@home/index/index');
 Route::get('/home/login/register', '@home/login/register');
+Route::post('/home/login/sendCode', '@home/login/sendCode');
 // Route::get('/', '@index/index/index');
 
 // include route_path(). '/admin/admin.php';
