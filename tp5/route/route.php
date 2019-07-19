@@ -31,7 +31,9 @@ Route::group('api', function() {
     
 })->allowCrossDomain();
 
-Route::get('/', '@index/index/index');
+Route::get('/', '@home/index/index');
+Route::get('/home/login/register', '@home/login/register');
+// Route::get('/', '@index/index/index');
 
 // include route_path(). '/admin/admin.php';
 
