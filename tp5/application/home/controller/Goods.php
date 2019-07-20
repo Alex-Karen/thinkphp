@@ -5,7 +5,7 @@ namespace app\home\controller;
 use think\Controller;
 use think\Request;
 
-class Goods extends Controller
+class Goods extends Base
 {
     public function lst(Request $request, $cid)
     {

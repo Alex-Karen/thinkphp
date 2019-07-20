@@ -31,17 +31,17 @@ Route::group('api', function() {
     
 })->allowCrossDomain();
 
-Route::get('/', '@home/index/index');
-Route::get('/home/login/register', '@home/login/register');
-Route::post('/home/login/register', '@home/login/register');
-Route::post('/home/login/sendCode', '@home/login/sendCode');
+// Route::get('/', '@home/index/index');
+// Route::get('/home/login/register', '@home/login/register');
+// Route::post('/home/login/register', '@home/login/register');
+// Route::post('/home/login/sendCode', '@home/login/sendCode');
 
-Route::get('/home/login/login', '@home/login/login');
-Route::post('/home/login/login', '@home/login/login');
+// Route::get('/home/login/login', '@home/login/login');
+// Route::post('/home/login/login', '@home/login/login');
 
-Route::get('/home/index/index', '@home/index/index');
+// Route::get('/home/index/index', '@home/index/index');
 
-Route::get('/home/login/logout', '@home/login/logout');
+// Route::get('/home/login/logout', '@home/login/logout');
 // Route::get('/', '@index/index/index');
 
 // include route_path(). '/admin/admin.php';
